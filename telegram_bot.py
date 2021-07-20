@@ -1,5 +1,5 @@
 from telegram import Update
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackQueryHandler, Filters
 
 
 class TelegramBot():
@@ -22,7 +22,7 @@ class TelegramBot():
     def callbackFn(self, update: Update, callback:callable):
         self.update = update
         self.user_name = update.effective_user.first_name
-        self.message = update.message.text
+        self.message = update.message.text if update.message else ''
         callback()
 
     # Функция по добавлению обработчика команд
@@ -33,3 +33,7 @@ class TelegramBot():
     # Функция по добавлению обработчика сообщений
     def add_message_handler(self, callback:callable):
         self.updater.dispatcher.add_handler(MessageHandler(filters=Filters.update, callback=lambda update, context: self.callbackFn(update, callback)))
+
+    # Функция по добавлению обработчика запросов
+    def add_query_handler(self, callback:callable):
+        self.updater.dispatcher.add_handler(CallbackQueryHandler(lambda update, context: self.callbackFn(update, callback)))
