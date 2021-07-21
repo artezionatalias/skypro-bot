@@ -1,2 +1,2 @@
 # skypro-bot
-Telegram Test bot for SkyPro webinar
+Telegram Test bot for Skypro webinar
