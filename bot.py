@@ -5,7 +5,7 @@ from genres import genres_map
 from telegram_bot import TelegramBot
 
 # Создаем нового телеграм бота
-bot = TelegramBot('1834437618:AAFlQzOQXz_draeSv1rx03XwR2XaXggtyjg')
+bot = TelegramBot('YOUR TOKEN HERE')
 
 
 # Функция приветствия пользователя и вывод кнопок с доступными жанрами фильмов
